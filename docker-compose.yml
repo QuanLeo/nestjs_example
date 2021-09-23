@@ -1,0 +1,40 @@
+version: '3.7'
+
+services:
+  web:
+    build:
+      context: ./docker/web
+      dockerfile: Dockerfile
+    container_name: web
+    command: sh -c "yarn && yarn start:dev"
+    volumes:
+      - ./web:/home/web
+    networks:
+      - my_network
+    ports:
+      - ${APP_PORT}:${APP_PORT}
+    links:
+      - db
+    environment:
+      APP_PORT: ${APP_PORT}
+  db:
+    image: mysql:8
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+  phpmyadmin:
+    image: phpmyadmin
+    links:
+      - db
+    ports:
+      - 8080:80
+    environment:
+      PMA_HOSTS: db
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+networks:
+  my_network:
