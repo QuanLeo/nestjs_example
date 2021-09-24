@@ -1,9 +1,18 @@
+import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true, //only using white attr in DTO
+      transform: true, //auto convert data input -> object DTO bellow
+      forbidNonWhitelisted: true, //throw exception if data input # whitelist
+    })
+  )
 
   const config = new DocumentBuilder()
     .setTitle('Nestjs example')
