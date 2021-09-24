@@ -9,17 +9,18 @@ services:
     command: sh -c "yarn && yarn start:dev"
     volumes:
       - ./web:/home/web
-    networks:
-      - my_network
     ports:
       - ${APP_PORT}:${APP_PORT}
     links:
       - db
     environment:
       APP_PORT: ${APP_PORT}
+      MYSQL_HOST: db
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
   db:
-    image: mysql:8
-    command: --default-authentication-plugin=mysql_native_password
+    image: mysql:5.7
     environment:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
