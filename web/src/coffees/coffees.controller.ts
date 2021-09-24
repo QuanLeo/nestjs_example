@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, NotFoundException, Param, Patch, Post, Query } from '@nestjs/common';
 import { CoffeesService } from './coffees.service';
 
 @Controller('coffees')
@@ -13,7 +13,10 @@ export class CoffeesController {
 
   @Get(':id')
   findOne(@Param('id') id: number) {
-    return this.coffeeService.findOne(id);
+    const coffee = this.coffeeService.findOne(id);
+    if(!coffee) throw new NotFoundException(`Coffee id : ${id} not found`)
+
+    return coffee
   }
 
   @Post()
@@ -23,11 +26,17 @@ export class CoffeesController {
 
   @Patch()
   update(@Param('id') id: number, @Body() params: any) {
+    const coffee = this.coffeeService.findOne(id);
+    if(!coffee) throw new NotFoundException(`Coffee id : ${id} not found`)
+
     return this.coffeeService.update(id, params);
   }
 
   @Delete(':id')
   delete(@Param('id') id: number) {
+    const coffee = this.coffeeService.findOne(id);
+    if(!coffee) throw new NotFoundException(`Coffee id : ${id} not found`)
+
     return this.coffeeService.delete(id);
   }
 }
