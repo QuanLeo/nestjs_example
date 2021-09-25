@@ -1,6 +1,8 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
+@Index(["name", "type"]) // Add index for multiple col
+
 export class Event {
   @PrimaryGeneratedColumn()
   id: number;
@@ -8,6 +10,7 @@ export class Event {
   @Column()
   type: string;
 
+  //@Index()  // Add index for col name
   @Column()
   name: string;
 
