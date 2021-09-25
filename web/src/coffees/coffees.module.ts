@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { async } from 'rxjs';
 import { Event } from 'src/events/entities/event.entity';
 import { CoffeeBrandsFactory } from './coffee-brands.factory';
 import { COFFEE_BRANDS } from './coffees.constants';
@@ -16,7 +17,7 @@ import { Flavor } from './entities/flavor.entity';
     CoffeeBrandsFactory,
     {
       provide: COFFEE_BRANDS, // using none class provider Token
-      useFactory: (brandsFactory: CoffeeBrandsFactory) => brandsFactory.create(),
+      useFactory: async (brandsFactory: CoffeeBrandsFactory) => await brandsFactory.create(),
       inject: [CoffeeBrandsFactory]
     },
   ],
