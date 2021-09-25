@@ -20,7 +20,7 @@ export class CoffeesService {
     private readonly connection: Connection,
     @Inject(COFFEE_BRANDS) coffeeBrand: string[],
   ){
-    console.log(coffeeBrand);
+    console.log(coffeeBrand)
   }
 
   findAll(paginationQuery: PaginationQueryDto) {
