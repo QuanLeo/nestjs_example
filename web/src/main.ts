@@ -11,6 +11,9 @@ async function bootstrap() {
       whitelist: true, //only using white attr in DTO
       transform: true, //auto convert data input -> object DTO bellow
       forbidNonWhitelisted: true, //throw exception if data input # whitelist
+      transformOptions: {
+        enableImplicitConversion: true
+      }
     })
   )
 
