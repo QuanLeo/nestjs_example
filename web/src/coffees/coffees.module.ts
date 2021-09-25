@@ -10,5 +10,6 @@ import { Flavor } from './entities/flavor.entity';
   imports: [TypeOrmModule.forFeature([Coffee, Flavor, Event])],
   controllers: [CoffeesController],
   providers: [CoffeesService],
+  exports: [CoffeesService] //public CoffeesService for other class import CoffeesModule
 })
 export class CoffeesModule {}
