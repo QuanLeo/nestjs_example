@@ -16,7 +16,19 @@ export class Coffee {
   @JoinTable()
   @ManyToMany(
     () => Flavor,
-    flavor => flavor.coffees
+    flavor => flavor.coffees,
+    {
+      cascade: true, // 👈 or optionally just insert or update ['insert']
+    }
   )
   flavors: Flavor[];
+
+  /**
+   * Convert to QueryBuilder
+   * const coffeesWithFlavors = await connection
+      .getRepository(Coffee)
+      .createQueryBuilder("coffee")
+      .leftJoinAndSelect("coffee.flavors", "flavor")
+      .getMany();
+  */
 }

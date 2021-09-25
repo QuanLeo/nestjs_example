@@ -16,13 +16,4 @@ export class Flavor {
     coffee => coffee.flavors
   )
   coffees: Coffee[]
-
-  /**
-   * Convert to QueryBuilder
-   * const coffeesWithFlavors = await connection
-        .getRepository(Coffee)
-        .createQueryBuilder("coffee")
-        .leftJoinAndSelect("coffee.flavors", "coffee")
-        .getMany();
-   */
 }
