@@ -40,6 +40,7 @@
     - Let TypeOrm generate migrations (for you)
       ```
         npx typeorm migration:generate -n SchemaSync
+        npx typeorm migration:generate -n AddDescriptionsToCoffees
       ```
 ## Structure & Command line:
   - Note:
