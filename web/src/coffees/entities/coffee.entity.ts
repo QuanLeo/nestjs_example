@@ -1,9 +1,9 @@
 // class output from db
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity()  //sql table = cooffee
+@Entity()  //sql table = coffee
 export class Coffee {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
