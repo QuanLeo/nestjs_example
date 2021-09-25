@@ -37,5 +37,3 @@ services:
       PMA_PORT: 3306
       PMA_USER: root
       PMA_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-networks:
-  my_network:
