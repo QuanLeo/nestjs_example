@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { CoffeesModule } from './coffees/coffees.module';
 import { CoffeeRatingModule } from './coffee-rating/coffee-rating.module';
 import { UsersController } from './users/users.controller';
+import { UsersService } from './users/users.service';
 
 class ConfigService {}
 class DevelopmentConfigService {}
@@ -35,6 +36,7 @@ class ProductionConfigService {}
           ? DevelopmentConfigService
           : ProductionConfigService,
     },
+    UsersService,
   ],
 })
 export class AppModule {}
