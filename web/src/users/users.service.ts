@@ -18,13 +18,13 @@ export class UsersService {
     return this.users.find(user => user.id === +id);
   }
 
-  create(createCoffeeDto: any) {
-    this.users.push(createCoffeeDto);
+  create(createUserDto: any) {
+    this.users.push(createUserDto);
   }
 
-  update(id: number, updateCoffeeDto: any) {
-    const existingCoffee = this.findOne(id);
-    if (existingCoffee) {
+  update(id: number, updateUserDto: any) {
+    const existingUser = this.findOne(id);
+    if (existingUser) {
       // update the existing entity
     }
   }
