@@ -4,8 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CoffeesModule } from './coffees/coffees.module';
 import { CoffeeRatingModule } from './coffee-rating/coffee-rating.module';
-import { UsersController } from './users/users.controller';
-import { UsersService } from './users/users.service';
+import { UsersModule } from './users/users.module';
 
 class ConfigService {}
 class DevelopmentConfigService {}
@@ -25,8 +24,9 @@ class ProductionConfigService {}
       synchronize: false, // your entities will be synced with the database(recommended: disable in prod)
     }),
     CoffeeRatingModule,
+    UsersModule,
   ],
-  controllers: [AppController, UsersController],
+  controllers: [AppController],
   providers: [
     AppService,
     {
@@ -36,7 +36,6 @@ class ProductionConfigService {}
           ? DevelopmentConfigService
           : ProductionConfigService,
     },
-    UsersService,
   ],
 })
 export class AppModule {}
