@@ -1,4 +1,4 @@
-version: '3.7'
+version: "3.7"
 
 services:
   web:
@@ -15,6 +15,7 @@ services:
       - db
     environment:
       APP_PORT: ${APP_PORT}
+      APP_SECRET_KEY: ${APP_SECRET_KEY}
       MYSQL_HOST: db
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
