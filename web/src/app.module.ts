@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { CoffeesModule } from './coffees/coffees.module';
 import { CoffeeRatingModule } from './coffee-rating/coffee-rating.module';
 import { UsersModule } from './users/users.module';
+import { FavoritesModule } from './favorites/favorites.module';
 
 class ConfigService {}
 class DevelopmentConfigService {}
@@ -25,6 +26,7 @@ class ProductionConfigService {}
     }),
     CoffeeRatingModule,
     UsersModule,
+    FavoritesModule,
   ],
   controllers: [AppController],
   providers: [
