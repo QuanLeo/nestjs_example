@@ -21,7 +21,7 @@ class ProductionConfigService {}
       password: process.env.MYSQL_PASSWORD, // user password
       database: process.env.MYSQL_DATABASE, // name of our database,
       autoLoadEntities: true, // models will be loaded automatically
-      synchronize: false, // your entities will be synced with the database(recommended: disable in prod)
+      synchronize: true, // your entities will be synced with the database(recommended: disable in prod)
     }),
     CoffeeRatingModule,
     UsersModule,
