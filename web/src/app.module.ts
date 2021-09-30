@@ -6,6 +6,7 @@ import { CoffeesModule } from './coffees/coffees.module';
 import { CoffeeRatingModule } from './coffee-rating/coffee-rating.module';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
+import { CaslModule } from './casl/casl.module';
 
 class ConfigService {}
 class DevelopmentConfigService {}
@@ -17,6 +18,7 @@ class ProductionConfigService {}
     CoffeeRatingModule,
     UsersModule,
     CoffeesModule,
+    CaslModule,
     TypeOrmModule.forRoot({
       type: 'mysql', // type of our database
       host: process.env.MYSQL_HOST, // database host
