@@ -121,3 +121,14 @@
       npm install --save-dev @types/passport-jwt
       npm i --save @nestjs/jwt
     ```
+
+- Nestjs & Casl
+
+  - [integrating-casl](https://docs.nestjs.com/security/authorization#integrating-casl)
+
+  - Install packages:
+    ```
+      npm i @casl/ability
+      nest g module casl
+      nest g class casl/casl-ability.factory
+    ```
