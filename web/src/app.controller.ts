@@ -19,8 +19,7 @@ export class AppController {
   @ApiBearerAuth('access_token')
   @Get()
   getHello(@Request() request: any) {
-    return 'hello world';
-    //return request.user; //requred Bearer token, validate tokem
+    return `hello user ${request.user.name}`;
   }
 
   @Post('login')
