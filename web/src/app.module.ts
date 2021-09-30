@@ -13,6 +13,9 @@ class ProductionConfigService {}
 
 @Module({
   imports: [
+    CoffeeRatingModule,
+    UsersModule,
+    AuthModule,
     CoffeesModule,
     TypeOrmModule.forRoot({
       type: 'mysql', // type of our database
@@ -24,9 +27,6 @@ class ProductionConfigService {}
       autoLoadEntities: true, // models will be loaded automatically
       synchronize: true, // your entities will be synced with the database(recommended: disable in prod)
     }),
-    CoffeeRatingModule,
-    UsersModule,
-    AuthModule,
   ],
   controllers: [AppController],
   providers: [

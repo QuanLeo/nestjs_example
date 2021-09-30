@@ -1,14 +1,26 @@
-import { Body, Controller, Get, Post, Request } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  Request,
+  UseGuards,
+} from '@nestjs/common';
+import { ApiBearerAuth } from '@nestjs/swagger';
 import { AuthService } from './auth/auth.service';
 import { BasicAuthDto } from './auth/entities/basic-auth.dto';
+import { JwtAuthGuard } from './auth/jwt-auth.guard';
 
 @Controller()
 export class AppController {
   constructor(private readonly authService: AuthService) {}
 
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth('access_token')
   @Get()
   getHello(@Request() request: any) {
-    return request.user; //requred Bearer token, validate tokem
+    return 'hello world';
+    //return request.user; //requred Bearer token, validate tokem
   }
 
   @Post('login')
