@@ -13,9 +13,9 @@ class ProductionConfigService {}
 
 @Module({
   imports: [
+    AuthModule,
     CoffeeRatingModule,
     UsersModule,
-    AuthModule,
     CoffeesModule,
     TypeOrmModule.forRoot({
       type: 'mysql', // type of our database
